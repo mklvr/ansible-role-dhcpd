@@ -1,0 +1,12 @@
+option domain-name "{{ loc_domain }}";
+option domain-name-servers 1.1.1.1, 1.0.0.1;
+default-lease-time 3600; 
+max-lease-time 7200;
+authoritative;
+
+subnet {{ loc_net }} netmask {{ loc_netmask }} {
+        option routers                  {{ loc_gateway }};
+        option subnet-mask              {{ loc_netmask }};
+        option domain-search            "{{ loc_domain }}";
+        range  {{ loc_range_begin }}    {{ loc_range_end }};
+}
