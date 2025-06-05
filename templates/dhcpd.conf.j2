@@ -1,5 +1,6 @@
 option domain-name "{{ loc_domain }}";
 option domain-name-servers 1.1.1.1, 1.0.0.1;
+option voip-tftp-server code 150 = { ip-address };
 default-lease-time 3600; 
 max-lease-time 7200;
 authoritative;
@@ -8,5 +9,7 @@ subnet {{ loc_net }} netmask {{ loc_netmask }} {
         option routers                  {{ loc_gateway }};
         option subnet-mask              {{ loc_netmask }};
         option domain-search            "{{ loc_domain }}";
+        option voip-tftp-server 10.110.10.1;
+
         range  {{ loc_range_begin }}    {{ loc_range_end }};
 }
